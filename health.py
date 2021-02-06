@@ -30,18 +30,21 @@ def autoHealth(STUDENTID,PASSID):
         url_1 = "http://e-office2.nuist.edu.cn/infoplus/form/3958255/render"
         bro.get(url = url_1)
         sleep(3)
-        bro.find_element_by_css_selector("input[name = 'fieldSTQKfrtw']").send_keys("36.5")
-        sleep(2)
-        bro.find_element_by_css_selector("input[name = 'fieldCNS']").click()
-        sleep(2)
-        bro.execute_script("$('nobr:contains(确认填报)').click()")
-        bro.find_element_by_css_selector("button.dialog_button.default.fr").click()
-        sleep(2)
-        bro.find_element_by_css_selector("button.dialog_button.default.fr").click()
-        sleep(2)
-        print("健康信息填报成功！")
-        sleep(5)
-        bro.close()
+        try:
+            bro.find_element_by_css_selector("input[name = 'fieldSTQKfrtw']").send_keys("36.5")
+            sleep(2)
+            bro.find_element_by_css_selector("input[name = 'fieldCNS']").click()
+            sleep(2)
+            bro.execute_script("$('nobr:contains(确认填报)').click()")
+            bro.find_element_by_css_selector("button.dialog_button.default.fr").click()
+            sleep(2)
+            bro.find_element_by_css_selector("button.dialog_button.default.fr").click()
+            sleep(2)
+            print("健康信息填报成功！")
+            sleep(5)
+            bro.close()
+        except Exception as e:
+            print("网址有误或者已经成功完成填报！")
     except Exception as e:
         print("健康信息填报失败！")
 def repeat(id, key):
